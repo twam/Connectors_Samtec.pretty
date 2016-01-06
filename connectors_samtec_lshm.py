@@ -112,7 +112,7 @@ for shield in [True, False]:
 			x_origin - B(number_of_positions)/2.0,
 			x_origin + B(number_of_positions)/2.0]
 		for x in mounting_holes_x:
-			output.write("  (pad \"\" np_thru_hole circle (at %.3f %.3f) (size %.3f %.3f) (drill %.3f) (layers *.Cu *.Mask F.SilkS))" % (
+			output.write("  (pad \"\" np_thru_hole circle (at %.3f %.3f) (size %.3f %.3f) (drill %.3f) (layers *.Cu *.Mask))" % (
 				x,
 				y_origin + y_end - pad_size_y/2.0 - mounting_hole_offset_y,
 				npth_drill_size,
@@ -123,7 +123,7 @@ for shield in [True, False]:
 		if shield:
 			for pos in ["F1","F2"]:
 				x = x_origin - C(number_of_positions)/2.0 if pos == "F1" else x_origin + C(number_of_positions)/2.0
-				output.write("  (pad \"%s\" thru_hole circle (at %.3f %.3f) (size %.3f %.3f) (drill %.3f) (layers *.Cu *.Mask F.SilkS))" % (
+				output.write("  (pad \"%s\" thru_hole circle (at %.3f %.3f) (size %.3f %.3f) (drill %.3f) (layers *.Cu *.Mask))" % (
 					pos,
 					x,
 					y_origin + y_end - pad_size_y/2.0 - mounting_hole_offset_y - shielding_pad_offset_y,
@@ -134,8 +134,8 @@ for shield in [True, False]:
 		# drawing
 		x_lines = [
 			x_origin - (D(number_of_positions) if shield else E(number_of_positions))/2.0,
-			x_origin + x_start - pad_size_x/2.0 - line_width,
-			x_origin + x_end + pad_size_x/2.0 + line_width,
+			x_origin + x_start - pad_size_x/2.0 - line_width - 0.15,
+			x_origin + x_end + pad_size_x/2.0 + line_width + 0.15,
 			x_origin + (D(number_of_positions) if shield else E(number_of_positions))/2.0]
 
 		y_lines = [
